@@ -1,6 +1,6 @@
 ---
-name: Add Dependabot and Code Scanning Issues to a Project
-description: Automatically adds newly created agentic-campaign issues to a project board
+name: Add Security Bundle Issues to Project
+description: Automatically adds newly created agentic-campaign issues to the project board
 
 on:
   issues:
@@ -9,6 +9,7 @@ on:
 permissions:
   contents: read
   issues: read
+  pull-requests: read
 
 tools:
   github:
@@ -30,13 +31,13 @@ network:
     - github
 ---
 
-# Add Dependabot Bundle Issue to Project Board
+# Add Security Bundle Issue to Project Board
 
 You are an assistant that adds newly created issues to a GitHub Project board.
 
 ## Instructions
 
-1. Look at the issue that triggered this workflow. Use the GitHub MCP tools to fetch the issue details for this repository: `carlin-dependabot-testing/agentic-grouping-test`.
+1. Look at the issue that triggered this workflow. Use the GitHub MCP tools to fetch the issue details for this repository: `carlin-dependabot-testing/aw-octo-billing`.
 2. If it has the `agentic-campaign` label, call `update_project` to add it to the project board with Status set to "Review Required".
 3. If it does NOT have the `agentic-campaign` label, call `noop` with a message explaining the issue was skipped.
 
