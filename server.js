@@ -23,7 +23,16 @@ app.use(cookieParser());
 app.use(express.static('public'));
 
 // Set view engine
-app.set('view engine', 'ejs');
+app.engine('hbs', (filePath, options, callback) => {
+    fs.readFile(filePath, 'utf8', (err, content) => {
+        if (err) {
+            return callback(err);
+        }
+        const template = handlebars.compile(content);
+        return callback(null, template(options));
+    });
+});
+app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
 
 // Mock database
